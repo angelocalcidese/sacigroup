@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form con Campi in Progress</title>
+</head>
+<body>
+
+<h2>Modulo con Campi in Progress</h2>
+
+<form action="process.php" method="POST" id="myForm">
+  
+  <div id="campi">
+    <!-- Qui verranno aggiunti i campi -->
+  </div>
+  
+  <button type="button" onclick="aggiungiCampo()">Aggiungi Campo</button>
+  <button type="button" onclick="rimuoviCampo()">Rimuovi Campo</button>
+  
+  <input type="submit" value="Invia">
+</form>
+
+<script>
+function aggiungiCampo() {
+  var div = document.createElement("div");
+  div.innerHTML = '<input type="text" name="campo[]" placeholder="Campo">';
+  document.getElementById("campi").appendChild(div);
+}
+
+function rimuoviCampo() {
+  var campi = document.getElementById("campi").children;
+  if (campi.length > 0) {
+    campi[campi.length - 1].remove();
+  }
+}
+</script>
+
+</body>
+</html>
+
