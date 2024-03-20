@@ -2,7 +2,8 @@
 if (isset($_COOKIE['POMACLIENTLOGGED']) and $_REQUEST["login"]==$_COOKIE['POMACLIENTLOGGED']) {}
 else
 {$url_pagina_chiamante="inizio.php";  ?>
-    <script>
+    <script> 
+    
 		top.window.location='<? echo $url_pagina_chiamante; ?>';
 		</script>
 <?php  }
