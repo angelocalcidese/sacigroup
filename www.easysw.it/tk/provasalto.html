@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>
+<style>
+/*
+ * TITLE:   Realizzare uno scrolltop con jQuery
+ * AUTHOR:  Code4Life
+ * WEBSITE: https://code4life.it/
+ * ARTICLE: https://code4life.it/guide/realizzare-uno-scrolltop-con-jquery/
+ */
+ 
+/* Required snippet style */
+#go_top {
+	bottom: 110px;
+	position: fixed;
+	right: 10px;
+	z-index: 99;
+}
+
+#go_top a {
+	color: #33b5e5;
+	font-size: 50px;
+}
+
+/* Demo style only */
+.demo-content { margin-bottom: 70px; }
+
+* {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	background: #33b5e5;
+	color: #fff;
+	padding: .5rem 3rem;
+}
+
+.container {
+	margin: auto;
+	padding: 5rem 0;
+	width: 80%;
+}
+
+.clear { line-height: 120vh; text-align: center; }
+
+/* Credits */
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:300' );
+.credits { background: #F3F5F6; border: solid 1px #CFD6D9; bottom: 40px; left: 0; padding: 10px; position: fixed; right: 0; text-align: center; z-index: 1000; }
+.btn-credits { border: 2px solid #33b5e5; border-radius: 10em; color: #33b5e5 !important; display: inline-block; font-family: 'Roboto', sans-serif; font-size: .8rem; line-height: 1.25; padding: .85rem 2.13rem; text-decoration: none; text-transform: uppercase; transition: .2s ease-out; vertical-align: middle; }
+.btn-credits:hover { background-color: #33b5e5; color: #fff !important; }
+</style>  
+  </head>
+  <body>
+<div class="demo-content">
+	<nav>
+		<h1>Page top</h1>
+		<small>... scroll to bottom ...</small>
+	</nav>
+	<div class="container">
+		<div class="clear">[Page content]</div>
+	</div>
+	<nav>
+		<h1>Page bottom</h1>
+		<small>... click button on right to return on top ...</small>
+	</nav>
+	<div id="go_top">
+		<a href="#"><i class="fa fa-chevron-circle-up"></i></a>
+	</div>
+</div>
+
+
+<script>
+jQuery( function( $ ) {
+	$( '#go_top a' ).on( 'click', function( e ) {
+		e.preventDefault();
+		$( 'html, body' ).stop().animate( {
+			scrollTop: 0
+		}, '500', 'swing' );
+	} );
+} );
+</script>
+  </body>
+</html>

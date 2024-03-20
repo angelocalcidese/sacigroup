@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Dinamico</title>
+</head>
+<body>
+
+<h2>Form Dinamico</h2>
+
+<form id="dynamicForm">
+    <div id="formContainer">
+        <!-- Qui verranno aggiunti i campi del form -->
+    </div>
+    <button type="button" onclick="aggiungiCampo()">Aggiungi Campo</button>
+    <button type="submit">Invia</button>
+</form>
+
+<script>
+// Contatore per i nomi dei campi
+let counter = 1;
+
+// Funzione per aggiungere un campo al form
+function aggiungiCampo() {
+    // Crea un nuovo elemento di input
+    const input = document.createElement("input");
+    input.type = "text";
+    input.name = "campo" + counter;
+    input.placeholder = "Campo " + counter;
+
+    // Aggiunge l'elemento al formContainer
+    document.getElementById("formContainer").appendChild(input);
+
+    // Incrementa il contatore
+    counter++;
+}
+</script>
+
+</body>
+</html>
+

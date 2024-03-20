@@ -1,0 +1,101 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Verdana:ital,wght@0,200;0,300;0,500;1,100&display=swap');
+
+@font-face {
+   font-family: 'Verdana';
+   src: url(Verdana.eot);
+   src: local('Verdana'), url('Verdana.ttf') format('truetype');
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 0px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 350px;
+  height: 160;
+  background-color: #c0bff8;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+    border: 10px solid #99cf8c;
+ box-shadow: 5px 10px 18px #1b5633;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+} 
+
+
+.tooltipx {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltipx .tooltiptext {
+  visibility: hidden;
+  width: 400px;
+  height: 700;
+  background-color: #feaaaa;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  border: 3px solid #b0adad;
+ box-shadow: 5px 10px 18px #1b5633;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltipx:hover .tooltiptext {
+  visibility: visible;
+}  
+
+div#container {
+min-width:   650px;
+  min-height:  500px;
+  max-width:  700px;
+  max-height: 1000px;
+}
+
+a 
+{
+    text-decoration: none; 
+    font-weight: normal;
+    color: #000000;
+}
+ 
+a:hover
+{
+    color: #0080FF;
+}
+.table6 {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+text-align: left;
+border-collapse: separate;
+border-spacing: 5px;
+background: #ffffff;
+color: #656665;
+border: 16px solid #B2CAEA;
+border-radius: 20px;
+}
+.table6 th {
+font-size: 18px;
+padding: 10px;
+}
+.dataTables_filter {float:right !important;}
+
+.center {
+    margin:auto;
+}
+.mb-10{
+    margin-bottom:10px;
+}

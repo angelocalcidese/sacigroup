@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>
+  </head>
+  <body>
+
+ 
+  <div>
+    <textarea style="width: 800px; height: 300px;" id="myArea2"></textarea><br>
+    <button onclick="addArea2();">Add Editor to TEXTAREA</button> <button onclick="removeArea2();">Remove Editor from TEXTAREA</button>
+  </div>
+  <div style="clear: both;"></div>
+  <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
+  <script>
+ 
+  var area1, area2;
+ 
+  function toggleArea1() {
+        if(!area1) {
+                area1 = new nicEditor({fullPanel : true}).panelInstance('myArea1',{hasPanel : true});
+        } else {
+                area1.removeInstance('myArea1');
+                area1 = null;
+        }
+  }
+ 
+  function addArea2() {
+        area2 = new nicEditor({fullPanel : true}).panelInstance('myArea2');
+  }
+  function removeArea2() {
+        area2.removeInstance('myArea2');
+  }
+ 
+  bkLib.onDomLoaded(function() { toggleArea1(); });
+  </script>
+</div>
+  </body>
+</html>

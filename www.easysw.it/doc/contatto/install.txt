@@ -1,0 +1,49 @@
+Cg_form_to_mail script per inviare mail tramite form ad un indirizzo predefinito
+   Copyright (C) 2005  Claudio Garau www.claudiogarau.it
+
+########################################################
+
+REQUISTI:
+PHP
+
+########################################################
+
+Se lo script è stato regolarmente scaricato dovreste avere a vostra disposizione 5 file:
+- "cg_form_to_mail.htm", form per l'iserimento dei dati
+- "cg_form_to_mail.php", spedisce i dati all'indirizzo indicato
+- "cg_form_to_mail.css", formatta il modulo in "cg_form_to_mail.htm"
+- "install.txt", questo file :-)
+- "license.txt", licenza GNU/GPL 
+
+########################################################
+
+INSTALLAZIONE:
+Decomprimete il file .zip.
+Modificate il "CSS" per adattarlo alla grafica del vostro sito.
+Modificate l'indirizzo del destinatario nel file "cg_form_to_mail.php".
+Includete il codice del file "cg_form_to_mail.htm" nel punto in cui volete che esso venga visualizzato.
+
+Fatto!
+
+########################################################
+
+LICENZA GNU/GPL 
+
+/*Cg_form_to_mail script per inviare mail tramite form ad un indirizzo predefinito
+   Copyright (C) 2005  Claudio Garau www.claudiogarau.it
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA*/
+
+########################################################

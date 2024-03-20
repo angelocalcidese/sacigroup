@@ -1,0 +1,1 @@
+https://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=http://www.mensacarita.it/chiudi.php?cli=04

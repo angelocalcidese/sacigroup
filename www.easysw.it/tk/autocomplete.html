@@ -1,0 +1,78 @@
+<meta charset="utf-8">
+<title></title>
+<meta charset="utf-8">
+<title></title>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="query-ui.min.js"></script>
+<link rel="stylesheet" href="query-ui.css">
+</head>
+<body>
+<div class="ui-widget">
+  <label for="tags">Campo di ricerca: </label>
+    <td height="45" colspan="1" width="130"  align="center" style="border-radius: 3px; border: 1px solid #949699;background: #e5e5e5;" ><font face="Verdana" color="#000000" style="font-size: 8pt;">Cliente:<br></font></b>
+            <input type="text" id="cliente" onkeyup="Ricerca()" name="cliente"  maxlength="100" size="40" style="background-color: #cbcaca;border-radius: 3px; border: 0px; font-size: 12pt;">   
+<!--            <input id="ricerca" onkeyup="Ricerca()" name="ricerca">   -->
+            </td>
+            
+            <td colspan="2" width="130"  align="center" style="border-radius: 3px; border: 1px solid #949699;background: #e5e5e5;" > <font face="Verdana" color="#000000" style="font-size: 8pt;">Commessa:<br></font></b>
+            <input type="text" id="commessa" onkeyup="Ricerca1()" name="commessa"  maxlength="120" size="70" style="background-color: #cbcaca; border: 0px; border-radius: 3px;font-size: 12pt;">
+            </td>          
+</div>
+</body>
+<script>
+var italianTeams = [];
+
+function autoComplete(){
+         $("#cliente").autocomplete({
+			source: italianTeams
+		 });
+          $("#commessa").autocomplete({
+			source: italianTeams
+		 });
+}
+
+
+
+function Ricerca(){
+	var valore = $('#cliente').val();
+	if(valore.length >= 1){
+	 
+	 $.ajax({
+	         url: 'leggiclienti.php',
+	         type: 'POST',
+	         dataType: 'json',
+	         data: {},
+	         success: function(risposta){
+	            italianTeams = risposta;
+				autoComplete();
+	         },
+	         error: function(error){
+				console.log("ERRORE CHIAMATA");
+	         }
+	});
+	
+  }
+}
+function Ricerca1(){
+	var valore1 = $('#commessa').val();
+	if(valore1.length >= 1){
+	 
+	 $.ajax({
+	         url: 'leggicommessa1.php?cliente=' + $('#cliente').val(),
+	         type: 'POST',
+	         dataType: 'json',
+	         data: {},
+	         success: function(risposta1){
+	            italianTeams = risposta1;
+				autoComplete();
+	         },
+	         error: function(error){
+				console.log("ERRORE CHIAMATA");
+	         }
+	});
+	
+  }
+}
+</script>
+</html>
+

@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Slide down menu - demo 2</title>
+	<link rel="stylesheet" href="slidedownmenu/slidedown-menu2.css">
+	<script type="text/javascript" src="slidedownmenu/slidedown-menu2.js"></script>	
+	<style type="text/css">
+	html{
+		height:100%;
+	}
+	body{
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+		font-size:0.8em;
+		margin:0px;
+		padding:0px;
+
+		background-color:#E2EBED;
+		height:100%;
+		text-align:center;
+	}
+	.clear{
+		clear:both;
+	}
+
+	#mainContainer{
+		width:760px;
+		text-align:left;
+		margin:0 auto;
+		background-color: #FFF;
+		border-left:1px solid #000;
+		border-right:1px solid #000;
+		height:100%;
+	}
+
+	#topBar{
+		width:760px;
+		height:100px;
+	}
+	#leftMenu{
+		width:200px;
+		padding-left:10px;
+		padding-right:10px;
+		float:left;
+	}
+	#mainContent{
+		width: 520px;
+		padding-right:10px;
+		float:left;
+	}
+	/*
+	General rules
+	*/
+	/* 	Layout CSS */
+	#dhtmlgoodies_slidedown_menu{
+
+		visibility:hidden;
+		border:1px solid #000;
+		padding:1px;
+
+		width: 182px;	/* IE 5.x */
+		width/* */:/**/182px;	/* Other browsers */
+		width: /**/182px;
+
+	}
+
+	/* All A tags - i.e menu items. */
+	#dhtmlgoodies_slidedown_menu a{
+		color: #000;
+		text-decoration:none;
+		display:block;
+		clear:both;
+
+		padding-left:2px;
+
+		width: 182px;	/* IE 5.x */
+		width/* */:/**/170px;	/* Other browsers */
+		width: /**/170px;
+
+	}
+
+	img{
+		border:0px;
+	}
+
+	/*
+	A tags
+	*/
+	#dhtmlgoodies_slidedown_menu .slMenuItem_depth1{	/* Main menu items */
+		margin-top:1px;
+		font-weight:bold;
+		background-color:#317082;
+		color:#FFF;
+		background-image:url('images/bg.gif');
+		height:30px;
+		line-height:30px;
+		vertical-align:middle;
+		padding-left:10px;
+		border-left:1px solid #000;
+		border-right:1px solid #000;
+	}
+	#dhtmlgoodies_slidedown_menu .slMenuItem_depth2{	/* Sub menu items */
+		margin-top:1px;
+		text-align:center;
+		font-weight:bold;
+	}
+	#dhtmlgoodies_slidedown_menu .slMenuItem_depth3{	/* Sub menu items */
+		margin-top:1px;
+		font-style:italic;
+		color:blue;
+	}
+	#dhtmlgoodies_slidedown_menu .slMenuItem_depth4{	/* Sub menu items */
+		margin-top:1px;
+		color:red;
+	}
+	#dhtmlgoodies_slidedown_menu .slMenuItem_depth5{	/* Sub menu items */
+		margin-top:1px;
+	}
+
+	/* UL tags, i.e group of menu utems.
+	It's important to add style to the UL if you're specifying margins. If not, assign the style directly
+	to the parent DIV, i.e.
+
+	#dhtmlgoodies_slidedown_menu .slideMenuDiv1
+
+	instead of
+
+	#dhtmlgoodies_slidedown_menu .slideMenuDiv1 ul
+	*/
+
+	#dhtmlgoodies_slidedown_menu .slideMenuDiv1 ul{
+		padding:1px;
+	}
+	#dhtmlgoodies_slidedown_menu .slideMenuDiv2 ul{
+
+	}
+	#dhtmlgoodies_slidedown_menu .slideMenuDiv3 ul{
+		margin-left:10px;
+		padding:1px;
+	}
+	#dhtmlgoodies_slidedown_menu .slMenuItem_depth4 ul{
+		margin-left:15px;
+		padding:1px;
+	}
+
+	</style>
+</head>
+<body>
+<div id="mainContainer" align="center">
+	<div id="topBar" style="width: 760px; height: 27px">
+		&nbsp;</div>
+	<div id="leftMenu">
+		<!-- START OF MENU -->
+		<div id="dhtmlgoodies_slidedown_menu">
+			<ul>
+				<li><a href="#">Anagrafica Soci</a>
+					<ul>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/creditcard.gif"><br>
+						Inserimento Nuovo Socio</a></li>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/mail.gif"><br>
+							Modifica Scheda Socio</a></li>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/print.gif"><br>
+							liste Soci</a></li>
+             <li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/print.gif"><br>
+							Ricerca Socio</a></li> 
+					</ul>
+				</li>
+				<li><a href="#">Supporto</a>
+					<ul>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/network.gif"><br>
+						Prezzi</a></li>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/book.gif"><br>
+							Partners</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Storia</a>
+					<ul>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/book.gif"><br>
+						Sottomenu 1</a></li>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/trash.gif"><br>
+							Sottomenu 2</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Il Team</a>
+					<ul>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/creditcard.gif"><br>
+						Sottomenu 3</a></li>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/write.gif"><br>
+							Sottomenu 4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Locations</a>
+					<ul>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/creditcard.gif"><br>
+						Voce di menù 1</a></li>
+						<li><a href="http://www.renatoweb.it">
+							<img src="slidedownmenu/images/mail.gif"><br>
+							Voce di menù 2</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- END OF MENU -->
+		<script type="text/javascript">
+		expandFirstItemAutomatically = 1;
+		expandMenuItemByUrl = false;
+		initSlideDownMenu();
+		</script>
+	</div>
+	
+</div>
+
+</body>
+</html>

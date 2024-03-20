@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>jquery.datepicker</title>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+    <!-- include jquery.datepicker -->
+    <script type="text/javascript" src="js/jquery.datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.datepicker.css" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $selected = $('.selected');
+            var $start = $('.start');
+            var $toggleMode = $('.toggleMode');
+
+            var $some_datepicker = $('.some_datepicker');
+            $some_datepicker.datepicker();
+            var datepicker = jQueryDatepicker.data($some_datepicker);
+
+            var date = new Date();
+
+            $some_datepicker.on(jQueryDatepicker.event('date_selected'), function (event, date) {
+                if (date.mode == 'date') {
+                    console.log('date selected:', date);
+                } else if (date.mode == 'start_date') {
+                    console.log('start date selected:', date);
+                }
+
+                if (datepicker.isStartDateSelected()) {
+                    $start.show().html('<b>Data inizio:</b> '+date.start_date.date.toString());
+                }
+
+                $selected.show().html('<b>date:</b> '+date.date.toString());
+            });
+
+            // If you need a date range
+            datepicker.setStartDate({
+                year: 2017,
+                month: date.getMonth()+1,
+                day: 4
+            });
+
+            datepicker.setDate({
+                year: 2017,
+                // jquery.datepicker accepts first month as 1
+                // (built-in Date() class accepts first month as 0)
+                month: date.getMonth()+1,
+                day: 21
+            });
+
+            $toggleMode.on('click', function (event) {
+                datepicker.toggleMode();
+
+                if (datepicker.getMode() != 'date') {
+                    $toggleMode.html('Data inizio Prenotazione');
+                } else {                    
+                    $toggleMode.html('Data fine prenotazione');
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-family: 'Arial';
+            font-size: 14px;
+            color: #383838;
+        }
+
+        .a,
+        .a:visited {
+            color: #176bb8;
+            text-decoration: none;
+        }
+
+        .a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            cursor: pointer;
+            border: 1px solid #c1c1c1;
+            border-bottom: 2px solid #c1c1c1;
+            padding: 5px; border-radius: 2px;
+            transition: all 250ms;
+            font-size: 14px;
+        }
+
+        .selected,
+        .start {
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    
+        
+        
+        <div style="width: 300px; font-family: 'Arial'; margin: auto;">
+            <div class="some_datepicker">
+            </div>
+        </div>
+
+        <div class="toggleMode btn" style="margin: auto; margin-top: 15px;">
+            Data inizio prenotazione
+        </div>
+
+        <div class="start" style="margin: auto; margin-top: 15px;">
+        </div>
+
+        <div class="selected" style="margin: auto;margin-top: 10px;">
+        </div>
+
+        </body>
+</html>

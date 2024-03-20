@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>
+<style type="text/css">
+    
+#slidetabsmenu {
+float:left;
+width:1000;
+font-size:90%;
+line-height:normal;
+
+}
+
+* html #slidetabsmenu{ /*IE only. Add 1em spacing between menu and rest of content*/
+margin-bottom: 1em;
+}
+
+#slidetabsmenu ul{
+list-style-type: none;
+margin:0;
+margin-left: 10px;
+padding:0;
+}
+
+#slidetabsmenu li{
+display:inline;
+margin:0;
+padding:0;
+}
+
+#slidetabsmenu a {
+float:left;
+background:url(media/tab-left.gif) no-repeat left top;
+margin:0;
+padding:0 0 0 9px;
+text-decoration:none;
+}
+
+#slidetabsmenu a span {
+float:left;
+display:block;
+background:url(media/tab-right.gif) no-repeat right top;
+padding:3px 14px 3px 5px;
+font-weight:bold;
+color:#3B3B3B;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#slidetabsmenu a span {float:none;}
+/* End IE5-Mac hack */
+
+#slidetabsmenu a:hover span {
+color: black;
+}
+
+#slidetabsmenu #current a {
+background-position:0 -125px;
+}
+
+#slidetabsmenu #current a span {
+background-position:100% -125px;
+color: black;
+}
+
+#slidetabsmenu a:hover {
+background-position:0% -125px;
+}
+
+#slidetabsmenu a:hover span {
+background-position:100% -125px;
+}
+
+</style>  
+  </head>
+  <body>
+<div id="slidetabsmenu" >
+  <ul>
+  
+
+<li ><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=1&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==1){echo "#177226";}else{echo "#993300";} ?>">Anamnesi</font><?if($totamnesi>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>
+
+
+
+<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=10&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home10"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==10){echo "#177226";}else{echo "#993300";} ?>">Info Paziente</font><?if($totinfo>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>
+<!--<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=13&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home13"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==13){echo "#177226";}else{echo "#993300";} ?>">Esame Obiettivo</font><?if($totesame>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li> -->
+
+
+
+<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=9&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home9"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==9){echo "#177226";}else{echo "#993300";} ?>">Allergie</font><?if($totallergie>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>
+
+
+
+
+<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=12&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home12"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==12){echo "#177226";}else{echo "#993300";} ?>">Terapie in Corso</font><?if($totterapia>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>
+<!--<li id="current"><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=14&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home14"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==14){echo "#177226";}else{echo "#993300";} ?>">Condizioni Generali</font><?if($totcondizione>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li> -->
+
+
+
+
+<li id="current"><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=2&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home1"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==2){echo "#177226";}else{echo "#cc0000";} ?>">Visite Mediche</font><?if($totvisita>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>
+
+
+
+
+
+<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=3&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home2"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==3){echo "#177226";}else{echo "#993300";} ?>">Analisi e Referti</font></span></a></li>
+<!--<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=4&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home3"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==4){echo "#177226";}else{echo "#993300";} ?>">Diagnosi per Immagini </font></span></a></li>-->
+
+
+
+
+
+
+
+<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=7&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home7"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==7){echo "#177226";}else{echo "#993300";} ?>">Terapia Consigliata</font><?if($totconsigliata>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>
+
+
+
+
+<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=6&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home5"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==6){echo "#177226";}else{echo "#993300";} ?>">Conclusioni</font><?if($totconclusione>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>
+<!-- <li><a href="amnesi.php?login=<? echo $login; ?>&ingranaggioxx=11&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home11"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==11){echo "#177226";}else{echo "#993300";} ?>">Follow up</font><?if($totfollow>0){ ?>&nbsp;&nbsp;<img border="0" src="cartella.png" width="18" height="15"><? } ?></span></a></li>  -->
+
+
+
+<li><a href="estraicartellamedica.php?login=<? echo $login; ?>&ingranaggioxx=15&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" target="_blank" title="Home16" onClick="return AalertFunction();"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==15){echo "#177226";}else{echo "#993300";} ?>">Stampa Cartella</font></span></a></li>
+
+
+
+<li><a href="amnesiz.php?login=<? echo $login; ?>&ingranaggioxx=5&tessera=<? echo $tessera; ?>&numero=<? echo $numero; ?>" title="Home4"><span><font face="Arial" size="4" color="<? if($ingranaggioxx==5){echo "#177226";}else{echo "#993300";} ?>">Dispensa Farmaci</font></span></a></li>	
+
+
+  </ul>
+</div>
+  </body>
+</html>
