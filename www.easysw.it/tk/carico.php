@@ -6,6 +6,7 @@ else
 		top.window.location='<? echo $url_pagina_chiamante; ?>';
 		</script>
 <?php  }
+
 $login=$_REQUEST["login"];
 include "conf_DB.php";
 $anno=$_REQUEST["anno"];
@@ -470,6 +471,7 @@ if ($result->num_rows > 0) {
                 <input type="hidden" name="ingranaggiox" value="1" />
                 <input type="hidden" name="articolo" value="<? echo $articolo; ?>" />
                 <input type="hidden" name="login" value="<?php echo $login; ?>" />
+                <input type="hidden" name="quantitaseriali" value="<?php echo $quantita; ?>" />
                 <button type="submit" class="btn btn-success">Memorizza</button>  
 </form>
 
@@ -509,8 +511,14 @@ function rimuoviCampo() {
             
 <?    }
 else {
-$seriale1=$_REQUEST["seriale-1"];
-echo "ser ".$seriale1; exit;
+$tabellaseriali=array();
+$numser=$_REQUEST["quantitaseriali"];
+for ($i = 0; $i < $numser; $i++) {
+$tabellaseriali[$i]=$_REQUEST["campo-".$i];    
+}
+
+print_r($tabellaseriali);
+ exit;
  }
 
 } 
