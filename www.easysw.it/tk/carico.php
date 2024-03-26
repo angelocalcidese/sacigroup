@@ -388,6 +388,7 @@ else
 if($ingranaggiox!=1){
 ?>
 <br>
+<div align="center">
 <b><font face="Arial" size="4" color="#476b5d">ARTICOLO DA CARICARE <? echo $articolo; ?></font>
 <br>
 <table align="center" id="example" class="display" cellspacing="0" align="left" style="width:99%; position:relative;">         
@@ -405,7 +406,7 @@ if($ingranaggiox!=1){
           <td  style=" border: 1px solid black;background-color: #476b5d; color: #ffffff; " align="center"><font size="3"   >Part N° Cliente</td>          
           <td  style=" border: 1px solid black;background-color: #476b5d; color: #ffffff; " align="center"><font size="3"   >Cliente Proprietario</td>          
                        
-              <td  colspan="1" style="  border: 1px solid black;background-color: #476b5d; color: #ffffff; " align="center"><font size="3"   >Sel.</td>
+              <td  colspan="1" style="  border: 1px solid black;background-color: #476b5d; color: #ffffff; " align="center"><font size="3"   >Qt.</td>
            </tr>       
 	</thead>
 	<tbody>
@@ -443,8 +444,8 @@ if ($result->num_rows > 0) {
       <td style=" border: 1px solid #e4e3e3; " align="center"><font size="3"  ><?php echo $ncostruttore; ?></td>
       <td style=" border: 1px solid #e4e3e3; " align="center"><font size="3"  ><?php echo $ncliente; ?></td> 
       <td style=" border: 1px solid #e4e3e3; " align="center"><font size="3"  ><?php echo $cliprop; ?></td>                 
-       <td style=" border: 1px solid #e4e3e3; " align="center" ><a  href="?login=<?php echo $login; ?>&progr=<?php echo $progr; ?>&ingranaggio=11&codice=<?php echo $codice; ?>"  ><img border="0" background="btn1.gif" src="pencil.png" width="25" height="25"></a></td>
-     
+      <td style=" border: 1px solid #e4e3e3; " align="center"><font size="3"  ><?php echo $quantita ?></td>                 
+      
      </tr>	
      
 <?php          
@@ -454,27 +455,47 @@ if ($result->num_rows > 0) {
 ?>             
 </table> 
 <br>
+</div>
+<div align="center">
 
-
-<h2>Memorizzazione Seriali</h2>
-
+<p><font face="Arial" size="4" color="#476b5d">Memorizzazione Seriali</font></p>
 <form action="" method="POST" id="myForm">
-  
+
+<table class="table-form" style="width:50%;">
+<tr>
+<td>  
   <div id="campi">
     <!-- Qui verranno aggiunti i campi -->
   </div>
-  
+
+<td align="center" valign="bottom"> 
+<div align="center">
+<? 
+$stringa=$_REQUEST["stringa"];
+echo "stri ".$stringa; ?>
   <button type="button" onclick="aggiungiCampo()" class="btn btn-success">+</button>
-  <button type="button" onclick="rimuoviCampo()" class="btn btn-success">Rimuovi Seriale Battuto</button>
-  
+   <button type="button" onclick="rimuoviCampo()" class="btn btn-success" style="background-color: #cc0000;">-</button>
+</div>
+</td>
+</tr>
+<tr>
+<td align="center">  
+<div align="center"> 
+
                 <input type="hidden" name="ingranaggio" value="100" />
                 <input type="hidden" name="ingranaggiox" value="1" />
                 <input type="hidden" name="articolo" value="<? echo $articolo; ?>" />
                 <input type="hidden" name="login" value="<?php echo $login; ?>" />
                 <input type="hidden" name="quantitaseriali" value="<?php echo $quantita; ?>" />
                 <button type="submit" class="btn btn-success">Memorizza</button>  
+</div>
+</td>
+<td>
+</td>
+</tr>
+</table>
 </form>
-
+<br><br><br><br> <br><br><br><br><br><br><br><br> <br><br><br><br> <br><br><br><br><br><br><br><br>
 <script>
 var riga=0;
 var max=<? echo $quantita; ?>;
@@ -485,6 +506,21 @@ function aggiungiCampo() {
     if(riga > 0){  
     var idInput = riga - 1;
         input = $("#seriale-" + idInput).val();
+        
+     // Effettua una chiamata AJAX per incrementare la stringa in PHP
+            $.ajax({
+                url: 'incrementa_stringa.php',
+                type: 'POST',
+                data: {stringa: 'mia_stringa'},  // Stringa da incrementare
+                success: function(response) {
+                    alert('Stringa incrementata: ' + response);
+                },
+                error: function() {
+                    alert('Errore durante l\'incremento della stringa.');
+                }
+            });    
+        
+            
     }
     
     if((riga > 0) && !input){
@@ -492,7 +528,7 @@ function aggiungiCampo() {
     } else if(riga < max){
         var div = document.createElement("div");
         var num = riga + 1;
-        div.innerHTML = num +' <input type="text" maxlength="200"  size="38" id="seriale-'+riga+'" name="campo-'+riga+'" value="" placeholder="Seriale">';
+        div.innerHTML = 'Seriale ' + num +' <input type="text" maxlength="200"  size="38" id="seriale-'+riga+'" name="campo-'+riga+'" value="" autofocus>';
         document.getElementById("campi").appendChild(div);
         riga++;
     } else {
@@ -508,7 +544,7 @@ function rimuoviCampo() {
   }
 }
 </script>
-            
+        
 <?    }
 else {
 $tabellaseriali=array();
