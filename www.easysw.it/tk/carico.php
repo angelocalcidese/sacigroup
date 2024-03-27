@@ -536,11 +536,11 @@ VALUES (
             <tr>
               <td align="center">
                 <div align="center">
-                  <input type="hidden" name="ingranaggio" value="100" />
-                  <input type="hidden" name="ingranaggiox" value="1" />
-                  <input type="hidden" name="articolo" value="<? echo $articolo; ?>" />
-                  <input type="hidden" name="login" value="<?php echo $login; ?>" />
-                  <input type="hidden" name="quantitaseriali" value="<?php echo $quantita; ?>" />
+                  <input type="hidden" name="ingranaggio" id="input-ingranaggio" value="100" />
+                  <input type="hidden" name="ingranaggiox" id="input-ingranaggiox" value="1" />
+                  <input type="hidden" name="articolo" id="input-articolo" value="<? echo $articolo; ?>" />
+                  <input type="hidden" name="login" id="input-login" value="<?php echo $login; ?>" />
+                  <input type="hidden" name="quantitaseriali" id="input-quantitaseriali" value="<?php echo $quantita; ?>" />
                   <button type="button" id="memButton" onClick="inviaValori()" class="btn btn-success disabled">Memorizza</button>
                 </div>
               </td>
@@ -559,9 +559,25 @@ VALUES (
             var link = "?campi="
             for (var a = 0; a < riga; a++) {
               //valori[a] = $("#seriale-" + a).val();
-              link = link + "-" + $("#seriale-" + a).val();
+              if (a == 0) {
+                link = link + $("#seriale-" + a).val();
+              } else {
+                link = link + "-" + $("#seriale-" + a).val();
+              }
+
             }
+            var ingranaggio = $("#input-ingranaggio").val();
+            var ingranaggiox = $("#input-ingranaggiox").val();
+            var articolo = $("#input-articolo").val();
+            var login = $("#input-login").val();
+            var quantitaseriali = $("#input-quantitaseriali").val();
+            link = link + "&ingranaggio=" + ingranaggio;
+            link = link + "&ingranaggiox=" + ingranaggiox;
+            link = link + "&articolo=" + articolo;
+            link = link + "&login=" + login;
+            link = link + "&quantitaseriali=" + quantitaseriali;
             console.log(link);
+            window.open(link, "_parent");
           }
 
           function addRiga() {
