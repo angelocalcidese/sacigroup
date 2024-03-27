@@ -524,10 +524,7 @@ VALUES (
                 </div>
 
               <td align="center" valign="bottom">
-                <div align="center">
-                  <?
-                  $stringa = $_REQUEST["stringa"];
-                  echo "stri " . $stringa; ?>
+                <div align="center">                  
                   <button type="submit" onclick="aggiungiCampo()" class="btn btn-success">+</button>
                   <button type="button" onclick="rimuoviCampo()" class="btn btn-success" style="background-color: #cc0000;">-</button>
                 </div>
@@ -562,7 +559,7 @@ VALUES (
               if (a == 0) {
                 link = link + $("#seriale-" + a).val();
               } else {
-                link = link + "-" + $("#seriale-" + a).val();
+                link = link + "§" + $("#seriale-" + a).val();
               }
 
             }
@@ -635,13 +632,15 @@ VALUES (
         </script>
 
   <?    } else {
-      $tabellaseriali = array();
+      #echo "articolo ".$articolo;
+      $tabellaseriali = $_REQUEST["campi"];
+      $tabellaserialix=explode("§",$tabellaseriali);
       $numser = $_REQUEST["quantitaseriali"];
-      for ($i = 0; $i < $numser; $i++) {
-        $tabellaseriali[$i] = $_REQUEST["campo-" . $i];
+      for ($i = 1; $i < $numser; $i++) {
+    echo $tabellaserialix[$i]."<br>";
       }
 
-      print_r($tabellaseriali);
+      #print_r($tabellaseriali);
       exit;
     }
   }
