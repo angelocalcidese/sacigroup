@@ -589,6 +589,7 @@ VALUES (
           }
 
           function controllaDoppi() {
+            console.log("controllo doppi");
             var result = false;
             var count = 0;
             var seriale = riga - 1;
@@ -600,7 +601,7 @@ VALUES (
                 }
               }
             }
-           if (count > 1) {
+            if (count > 1) {
               result = true;
             }
             return result;
@@ -616,7 +617,9 @@ VALUES (
             if ((riga > 0) && !input) {
               console.log("Non puoi inserire altri seriali se non inserisci l'ultimo");
             } else if (controllaDoppi()) {
-              alert("codice già inserito");
+              //alert("codice già inserito");
+              $("#seriale-" + idInput).val("");
+              $("#memButton").addClass("disabled");
             } else if (riga < max) {
               addRiga();
             } else {
@@ -628,16 +631,24 @@ VALUES (
 
           function attivaMem(id) {
             var idNew = id + 1;
-
+            var idInput = riga - 1;
+            //controllaDoppi();
             if (idNew == max) {
               var input = $("#seriale-" + id).val();
 
-              if (input.length > 0) {
+              if ((input.length > 0) && !controllaDoppi()) {
                 $("#memButton").removeClass("disabled");
+              } else if ((input.length > 0) && controllaDoppi()) {
+                $("#memButton").addClass("disabled");
+                //$("#seriale-" + idInput).val("");
               } else {
                 $("#memButton").addClass("disabled");
               }
             }
+            /*else {
+              $("#seriale-" + idInput).val("");
+              console.log("Codice già Inserito")
+            }*/
           }
 
           function rimuoviCampo() {
