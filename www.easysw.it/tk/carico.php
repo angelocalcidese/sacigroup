@@ -524,7 +524,7 @@ VALUES (
                 </div>
 
               <td align="center" valign="bottom">
-                <div align="center">                  
+                <div align="center">
                   <button type="submit" onclick="aggiungiCampo()" class="btn btn-success">+</button>
                   <button type="button" onclick="rimuoviCampo()" class="btn btn-success" style="background-color: #cc0000;">-</button>
                 </div>
@@ -588,16 +588,35 @@ VALUES (
             }
           }
 
+          function controllaDoppi() {
+            var result = false;
+            var count = 0;
+            var seriale = riga - 1;
+            var ultimo = $("#seriale-" + seriale).val();
+            if (riga > 0) {
+              for (var a = 0; a < riga; a++) {
+                if ($("#seriale-" + a).val() == ultimo) {
+                  count++;
+                }
+              }
+            }
+           if (count > 1) {
+              result = true;
+            }
+            return result;
+          }
+
           function aggiungiCampo() {
             var input = null;
             if (riga > 0) {
               var idInput = riga - 1;
               input = $("#seriale-" + idInput).val();
-
             }
 
             if ((riga > 0) && !input) {
               console.log("Non puoi inserire altri seriali se non inserisci l'ultimo");
+            } else if (controllaDoppi()) {
+              alert("codice già inserito");
             } else if (riga < max) {
               addRiga();
             } else {
@@ -634,10 +653,10 @@ VALUES (
   <?    } else {
       #echo "articolo ".$articolo;
       $tabellaseriali = $_REQUEST["campi"];
-      $tabellaserialix=explode("§",$tabellaseriali);
+      $tabellaserialix = explode("§", $tabellaseriali);
       $numser = $_REQUEST["quantitaseriali"];
       for ($i = 1; $i < $numser; $i++) {
-    echo $tabellaserialix[$i]."<br>";
+        echo $tabellaserialix[$i] . "<br>";
       }
 
       #print_r($tabellaseriali);
