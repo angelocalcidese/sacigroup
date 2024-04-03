@@ -314,6 +314,9 @@ if ($ingranaggio == 100) {
   $numddt = $_REQUEST["numddt"];
   $magazzino = $_REQUEST["magazzino"];
   $note = $_REQUEST["note"];
+  
+  #echo "note ".$note;
+  
   $quantita = $_REQUEST["quantita"];
   $ticketcli = $_REQUEST["ticketcli"];
   $vettore = $_REQUEST["vettore"];
@@ -462,7 +465,7 @@ VALUES (
                   $modello = $macrogruppo["modello"];
                   $volume = $macrogruppo["volume"];
                   $peso = $macrogruppo["peso"];
-                  $note = $macrogruppo["note"];
+                  $notey = $macrogruppo["note"];
               ?>
                   <tr>
                     <td style=" border: 1px solid #e4e3e3; " align="center">
@@ -538,6 +541,19 @@ VALUES (
                   <input type="hidden" name="articolo" id="input-articolo" value="<? echo $articolo; ?>" />
                   <input type="hidden" name="login" id="input-login" value="<?php echo $login; ?>" />
                   <input type="hidden" name="quantitaseriali" id="input-quantitaseriali" value="<?php echo $quantita; ?>" />
+                  <input type="hidden" name="dataoperazione" id="input-dataoperazione" value="<?php echo $dataoperazione; ?>" />
+                  <input type="hidden" name="mittente" id="input-mittente" value="<?php echo $mittente; ?>" />
+                  <input type="hidden" name="dataddt" id="input-dataddt" value="<?php echo $dataddt; ?>" />
+                  <input type="hidden" name="numddt" id="input-numddt" value="<?php echo $numddt; ?>" />
+                  <input type="hidden" name="magazzino" id="input-magazzino" value="<?php echo $magazzino; ?>" />
+                  <input type="hidden" name="note" id="input-note" value="<?php echo $note; ?>" />
+                  <input type="hidden" name="quantita" id="input-quantita" value="<?php echo $quantita; ?>" />
+                  <input type="hidden" name="ticketcli" id="input-ticketcli" value="<?php echo $ticketcli; ?>" />
+                  <input type="hidden" name="vettore" id="input-vettore" value="<?php echo $vettore; ?>" />
+                  <input type="hidden" name="identrasp" id="input-identrasp" value="<?php echo $identrasp; ?>" />
+                  <input type="hidden" name="ticket" id="input-ticket" value="<?php echo $ticket; ?>" />
+                  <input type="hidden" name="seriale" id="input-seriale" value="<?php echo $seriale; ?>" />
+                  <input type="hidden" name="codartcli" id="input-codartcli" value="<?php echo $codartcli; ?>" />
                   <button type="button" id="memButton" onClick="inviaValori()" class="btn btn-success disabled">Memorizza</button>
                 </div>
               </td>
@@ -568,11 +584,40 @@ VALUES (
             var articolo = $("#input-articolo").val();
             var login = $("#input-login").val();
             var quantitaseriali = $("#input-quantitaseriali").val();
+            var dataoperazione = $("#input-dataoperazione").val();
+            var mittente = $("#input-mittente").val();
+            var dataddt = $("#input-dataddt").val();
+            var numddt = $("#input-numddt").val();
+            var magazzino = $("#input-magazzino").val();
+            var note = $("#input-note").val();
+            var quantita = $("#input-quantita").val();
+            var ticketcli = $("#input-ticketcli").val();
+            var vettore = $("#input-vettore").val();
+            var identrasp = $("#input-identrasp").val();
+            var ticket = $("#input-ticket").val();
+            var seriale = $("#input-seriale").val();
+            var codartcli = $("#input-codartcli").val(); 
+   
             link = link + "&ingranaggio=" + ingranaggio;
             link = link + "&ingranaggiox=" + ingranaggiox;
             link = link + "&articolo=" + articolo;
             link = link + "&login=" + login;
             link = link + "&quantitaseriali=" + quantitaseriali;
+            link = link + "&dataoperazione=" + dataoperazione;
+            link = link + "&mittente=" + mittente;
+            link = link + "&dataddt=" + dataddt;
+            link = link + "&numddt=" + numddt;  
+            link = link + "&magazzino=" + magazzino;
+            link = link + "&note=" + note;
+            link = link + "&quantita=" + quantita;
+            link = link + "&ticketcli=" + ticketcli;            
+            link = link + "&vettore=" + vettore;  
+            link = link + "&identrasp=" + identrasp;
+            link = link + "&note=" + note;
+            link = link + "&quantita=" + quantita;
+            link = link + "&ticket=" + ticket;
+            link = link + "&seriale=" + seriale;
+            link = link + "&codartcli=" + codartcli;            
             console.log(link);
             window.open(link, "_parent");
           }
@@ -666,16 +711,74 @@ VALUES (
       $tabellaseriali = $_REQUEST["campi"];
       $tabellaserialix = explode("§", $tabellaseriali);
       $numser = $_REQUEST["quantitaseriali"];
-      for ($i = 1; $i < $numser; $i++) {
-        echo $tabellaserialix[$i] . "<br>";
+      
+###########################    scarica i record di carico con seriale ###################################      
+      for ($i = 0; $i < $numser; $i++) {
+      
+ $sql1 = "SELECT * FROM progressivocarico  where progr = '1' ";
+    #echo $sql1; 
+    $result = $conn->query($sql1);
+    if ($result->num_rows > 0) {
+      while ($macrogruppo = $result->fetch_assoc()) {
+        $numero = $macrogruppo["numero"];
+      }
+    }
+    $numero++;
+    $sql = "UPDATE progressivocarico set 
+numero = '$numero'
+where 
+progr = '1' 
+";
+    if ($conn->query($sql) === TRUE) {
+    } else {
+      echo "Error inserted record: " . $conn->error;
+    }
+    $codice = "MAG" . $numero;
+    $sql = "INSERT INTO carico
+( 
+articolo,
+quantita,                           
+dataoperazione, 
+mittente, 
+dataddt, 
+numddt, 
+magazzino, 
+note,
+login,
+ticket,
+ticketcli,
+vettore,
+identrasp,
+seriale,
+codartcli) 
+VALUES ( 
+'$articolo',
+'1',           
+'$dataoperazione', 
+'$mittente', 
+'$dataddt', 
+'$numddt', 
+'$magazzino', 
+'$note',
+'$login',
+'$ticket',
+'$ticketcli',
+'$vettore',
+'$identrasp',
+'$tabellaserialix[$i]',
+'$codartcli'
+)";
+    #echo $sql; exit;
+    if ($conn->query($sql) === TRUE) {   } else { echo $sql . "Errore inserimento recoerd: " . $conn->error;  }            
+        #echo $tabellaserialix[$i] . "<br>";
       }
 
       #print_r($tabellaseriali);
-      exit;
+      
     }
   }
 
-  exit;
+
 }    ?>
 
 
@@ -972,7 +1075,7 @@ VALUES (
           </form>
         </table>
       <? } ?>
-      <br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br> <br><br><br><br> <br><br><br><br><br><br><br><br> <br><br><br><br> <br><br><br><br><br><br><br><br>
 
       </div>
   </body>

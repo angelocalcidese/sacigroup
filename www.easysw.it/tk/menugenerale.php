@@ -542,6 +542,7 @@ $(document).ready(function(){
   <li><a  href="#"><i class="fa-solid fa-briefcase"></i> &nbsp;&nbsp;LAVORO</a>
   <ul class="sub-menu">
     <li><a href="?login=<?php echo $login; ?>&ingranaggio=6"><i class="fa-solid fa-boxes-stacked"></i>  &nbsp;&nbsp;Tickets</a></li>
+    <li><a href="?login=<?php echo $login; ?>&ingranaggio=633"><i class="fa-solid fa-folder-tree"></i>  &nbsp;&nbsp;Autorizza Spedizione</a></li>
   <ul>
     <li><a href="#">Sub Sub-Menu 1</a></li>
    	<li><a href="#">Sub Sub-Menu 2</a></li>
@@ -565,14 +566,14 @@ $(document).ready(function(){
   <li><a  href="#"><i class="fa-solid fa-box"></i> &nbsp;&nbsp;LOGISTICA</a> 
   <ul class="sub-menu"> 
   
-   <li><a href="#">Magazzini</a>
+   <li><a href="#"><i class="fa-solid fa-box"></i> &nbsp;&nbsp;Magazzini</a>
     <ul>
     <li><a href="?login=<?php echo $login; ?>&ingranaggio=6000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Nuovo Magazzino</a></li>
    	<li><a href="?login=<?php echo $login; ?>&ingranaggio=6000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Varia Magazzino</a></li>
     <li><a href="?login=<?php echo $login; ?>&ingranaggio=6001"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Tabelle Magazzino</a></li>
     </ul>
     </li>
-   <li><a href="#">Anagrafica Articoli</a>
+   <li><a href="#"><i class="fa-solid fa-box"></i> &nbsp;&nbsp;Anagrafica Articoli</a>
     <ul>
     <li><a href="?login=<?php echo $login; ?>&ingranaggio=7000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Nuovo Articolo</a></li>
    	<li><a href="?login=<?php echo $login; ?>&ingranaggio=7000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Varia Articolo</a></li>
@@ -580,19 +581,24 @@ $(document).ready(function(){
     
     </ul>
    </li>
-     <li><a href="#">Movimenti</a>
+     <li><a href="#"><i class="fa-solid fa-box"></i> &nbsp;&nbsp;Movimenti</a>
     <ul>
     <li><a href="?login=<?php echo $login; ?>&ingranaggio=8000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Carico</a></li>
    	<li><a href="?login=<?php echo $login; ?>&ingranaggio=9000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Scarico</a></li>
-	<li><a href="#">Inventario</a></li>
-   	<li><a href="#">Ricerca Articolo</a></li>
+	<li><a href="#"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbspInventario</a></li>
+   	<li><a href="#"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbspRicerca Articolo</a></li>
     </ul>
    </li>
-     <li><a href="#">Spedizione</a>
+     <li><a href="#"><i class="fa-solid fa-box"></i> &nbsp;&nbsp;Spedizione</a>
     <ul>
     <li><a href="?login=<?php echo $login; ?>&ingranaggio=16000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Da Spedire</a></li>
    	<li><a href="?login=<?php echo $login; ?>&ingranaggio=18000"><i class="fa-solid fa-boxes-stacked"></i> &nbsp;&nbsp;Spediti</a></li>
     </ul>
+   </li>
+     <li><a href="#"><i class="fa-solid fa-box"></i> &nbsp;&nbsp;Tabelle</a>
+    <ul>
+    <li><a href="?login=<?php echo $login; ?>&ingranaggio=160001"><i class="fa-solid fa-folder-tree"></i> &nbsp;&nbsp;Causali Spedizioni</a></li>
+   	 </ul>
    </li>
    </ul>
   </li>

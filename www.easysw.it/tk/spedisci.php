@@ -1288,14 +1288,14 @@ $telefonolog= $macrogruppo["logtelefono"];
 $celllog= $macrogruppo["logcell"];
  }}
 $sqlg = "SELECT *  FROM  articolo where codice = '$articolods' ";  
-#echo $sql;
+#echo $sqlg;
 $rCountg = 1;
 $resultg = $conn->query($sqlg);
 if ($resultg->num_rows > 0) {
   while($macrogruppog = $resultg->fetch_assoc())	
 	{ 
      $progr = $macrogruppog["progr"];
-     $denominazione = $macrogruppog["denominazione"];
+     $denominazionearticolo = $macrogruppog["denominazione"];
      $dataoperazione = $macrogruppog["dataoperazione"];
      $codiceart = $macrogruppog["codice"];
      $ncliente = $macrogruppog["ncliente"];
@@ -1351,48 +1351,13 @@ if ($result->num_rows > 0) {
      $struttura = $macrogruppo["struttura"];}}  
 ?>
 <td style="border: none;" align="left">
-<p align="left"><b><br><br>Magazzino: <? echo $codmagx." ".$denominazione."<br>".$viamag."<br>".$cittamag." ".$provmag; ?></b><br></font>
+<p align="left"><b><br><br>Magazzino: <? echo $codmagx." ".$denominazione."<br>".$viamag."<br>".$cap." - ".$cittamag." ".$provmag; ?></b><br></font>
 <br>  </p>
 </td>
 </tr>
 </table><table  cellspacing="0" width="790">
 <tr>		  
-<td  bgcolor="#000000"  width="790"><p align="center"><font size="3" face="Arial" color="#FFFFFF"><b>DOCUMENTO DI TRASPORTO</b> </p>      </td>      
-</tr>
-</table>
-<br>
-<table style="border: none;" cellspacing="0" width="790px">
-<tr style="border: none;">
-<td style="border: none;" valign="top">
-<table  style="border: 1px solid #000000;" cellspacing="0" width="390px">
-<tr style="border: none;">
-<td style="border: none;" align="left">
-<p align="left"><font face="Arial" size="4" color="#000000">MITTENTE:</p><p align="center"><b>SACI GROUP S.r.L.</b><br></font><font face="Arial" size="2" color="#000000">
-Via dei Castelli Romani, 52
-00071 Pomezia (RM)<br>
-C.F. 97556510150 - P.IVA 087231100964<br>
-Tel. 06 86922029 - Email info@sacigroup.it <br>
-www.sacigroup.it
-<br> <br><br> </p>
-</td>
-</tr>
-</table>
-<br>
-<table style="border: 1px solid #000000;"  cellspacing="0" width="390px">
-<tr style="border: none;" valign="bottom">
-<td <td style="border: none;">
-<font face="Arial" size="2" color="#000000">CAUSALE DEL TRASPORTO:<BR>
-<?echo "<p align='center'><b><br>"."CONSEGNA PER CONTO"."</b></p>"; ?>
-</td>
-</tr>
-</table>
-</td>
-<td style="border: none;">
-<table style="border: 1px solid #000000;"  cellspacing="0" width="390px" valign="top">
-<tr <td style="border: none;" >
-<td <td style="border: none;">
-<font face="Arial" size="2" color="#000000">DOCUMENTO DI TRASPORTO<BR>
-<br>
+<td  bgcolor="#000000"  width="790"><p align="center"><font size="3" face="Arial" color="#FFFFFF"><b>DOCUMENTO DI TRASPORTO </b> 
 <? $oggi=date("d/m/Y"); 
 $sql1 = "SELECT * FROM progressivoddt  where progr = '1' ";
 #echo $sql1; 
@@ -1413,55 +1378,85 @@ if ($conn->query($sql) === TRUE)
     else { echo "Error inserted record: " . $conn->error; }  
     }    
 ?>
-N.<? echo "<font face='Arial' size='5' color='#cc0000'><b>&nbsp;&nbsp; ".$tesseraww."</b></font>";?>   &nbsp;&nbsp;&nbsp;    DEL  <? echo $oggi."<br>"; ?>
-<br>
-<br>
-</td>
-</td>
-</tr>
-</table>
-<br>
-<table style="border: 1px solid #000000;"  cellspacing="0" width="390px">
-<tr <td style="border: none;">
-<td <td style="border: none;">
-<font face="Arial" size="3" color="#000000">DESTINATARIO:<BR><br>
+N.<? echo "<font face='Arial' size='4' color='#ffffff'><b>&nbsp;&nbsp; ".$tesseraww."</b></font>";?>   &nbsp;&nbsp;&nbsp;    DEL  <? echo $oggi."<br>"; ?>
 
-<?echo "<p align='center'>"."<b>Spett.le ".$ragsoc."</b>"; ?><br>
-<?echo $via; ?><br>
-<?echo $cap." - ".$citta." ".$prov; ?><br>
-<?echo "C.F. ".$iva."</p>"; ?>
-</td>
+
+</p>      
+
+
+</td>      
 </tr>
 </table>
+<br>
+
+<table style="border: none;" cellspacing="0" width="790px">
+<tr style="border: none;">
+<td style="border: 1px solid #000000;" valign="top" width="395px">
+<p align="left"><font face="Arial" size="2" color="#000000">DENOMINAZIONE MITTENTE:</p><p align="center"></font><font face="Arial" size="3" color="#000000"><b>SACI GROUP S.r.L.</b><br></font><p align="center"><font face="Arial" size="2" color="#000000">
+Via dei Castelli Romani, 52
+00071 Pomezia (RM)<br>
+C.F. 97556510150 - P.IVA 087231100964<br>
+Tel. 06 86922029 - Email info@sacigroup.it <br>
+www.sacigroup.it
+<br>  </p>
+</td>
+<td>
+</td>
+
+<td style="border: 1px solid #000000;" valign="top" width="395px">
+<p align="left"><font face="Arial" size="2" color="#000000">DENOMINAZIONE DESTINATARIO:</p><p align="center"></font><font face="Arial" size="3" color="#000000"><b><? echo $ragsoc; ?></b><br></font><font face="Arial" size="2" color="#000000">
+<?echo "<p align='center'>".$via."<br>".$cap." - ".$citta." ".$prov."</b></p>"; ?>
+ </p>
 </td>
 </tr>
-<tr style="border: none;">
-<td colspan="2" style="border: none;">
-<font face="Arial" size="2" color="#000000"><br>
-</td>
-<tr>
-<tr style="border: none;">
-<td colspan="2" style="border: 1;">
-<font face="Arial" size="2" color="#000000">LUOGO DI DESTINAZIONE:<br>
- 
- <?echo "<p align='center'><b>".$ragsoc." ".$via." ".$cap." - ".$citta." ".$prov."</b></p>"; ?>
- </td>
- </tr>
 </table>
 <br>
 <table style="border: none;" cellspacing="0" width="790px">
-<tr style="border: none;" >
-<td style="border: none;">
+<tr style="border: none;">
+<td style="border: 1px solid #000000;" valign="top" width="395px">
+<p align="left"><font face="Arial" size="2" color="#000000">INDIRIZZO DI PARTENZA DELLA MERCE:</p><p align="center"></font><font face="Arial" size="3" color="#000000"><b>SACI GROUP S.r.L.</b><br></font><p align="center"><font face="Arial" size="2" color="#000000">
+Magazzino: <? echo $codmagx." ".$denominazione."<br>"; ?>
+<? echo $viamag; ?> <br>
+<? echo $cap." - ".$cittamag." ".$promagv; ?><br>
+
+<br>  </p>
+</td>
+
+<td>
+</td>
+<td style="border: 1px solid #000000;" valign="top" width="395px">
+<p align="left"><font face="Arial" size="2" color="#000000">INDIRIZZO DI DESTINAZIONE DELLA MERCE:</p><p align="center"></font><font face="Arial" size="3" color="#000000"><b><? echo $ragsoc; ?></b><br></font><font face="Arial" size="2" color="#000000">
+<?echo "<p align='center'>".$via."<br>".$cap." - ".$citta." ".$prov."</b></p>"; ?>
+ </p>
 </td>
 </tr>
- </table>
+</table>
+
+
+<br>
+
+<table id="thetable"  cellspacing="0" width="790" class="table6x"> 
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="10%" align="left" bgcolor="#cecccc"><font size="3" face="Arial">Rif. </b></td>  
+<td style=" border: 1px solid black;" width="90%" align="left" bgcolor="<? echo $colore; ?>"><b><font size="3" face="Arial"><? echo $ragsocclixx; ?></font></b></td>            
+</tr>
+<tr class="first" style=" border: 0px solid black;">
+<td valign="top" style=" border: 1px solid black;" width="10%" align="left" bgcolor="#cecccc"><font size="3" face="Arial">Note </b></td>  
+<td style=" border: 1px solid black;" width="90%" align="left" bgcolor="<? echo $colore; ?>"><b><font size="3" face="Arial"><br><br></font></b></td>            
+</tr>
+</table>
+<br>
+
+
+
 <? ################################   fine intestazione   ####################### ?>
 <table id="thetable"  cellspacing="0" width="790" class="table6x"> 
-<td  bgcolor="#000000" align="center" width="10%"><font size="3" face="Arial" color="#FFFFFF"><b>PRG</b></td>  
-<td  bgcolor="#000000" align="center" ><font size="3" face="Arial" color="#FFFFFF"><b>DESCRIZIONE DEI BENI</b></td>      
-<td  bgcolor="#000000" align="center" width="10%"><font size="3" face="Arial" color="#FFFFFF"><b>QT</b></td>      
-<td  bgcolor="#000000" align="center" width="10%"><font size="3" face="Arial" color="#FFFFFF"><b>COLLI</b></td>      
-</td>
+<td  bgcolor="#000000" align="center" width="5%"><font size="3" face="Arial" color="#FFFFFF"><b>PRG</b></td>  
+<td  bgcolor="#000000" align="center" ><font size="3" face="Arial" color="#FFFFFF"><b>COD.</b></td>      
+<td  bgcolor="#000000" align="center" width="65%"><font size="3" face="Arial" color="#FFFFFF"><b>DESCRIZIONE</b></td>      
+<td  bgcolor="#000000" align="center" width="25%"><font size="3" face="Arial" color="#FFFFFF"><b>SERIALE</b></td>      
+<td  bgcolor="#000000" align="center" width="5%"><font size="3" face="Arial" color="#FFFFFF"><b>QTY</b></td>      
+
 </tr>
 
 <? $comodocat=$cliente; $totalepezzi=0;
@@ -1470,17 +1465,20 @@ N.<? echo "<font face='Arial' size='5' color='#cc0000'><b>&nbsp;&nbsp; ".$tesser
 $tot++;    
 for ($i = $tot; $i <= 15; $i++) { ?>
 <tr class="first" style=" border: 0px solid black;">
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $i; ?></td>
+      <td style=" border: 1px solid black;" width="5%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $i; ?></td>
       <td style=" border: 1px solid black;" align="left" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>            
-      <td style=" border: 1px solid black;" width="10%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>    
+      <td style=" border: 1px solid black;" width="65%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>            
+      <td style=" border: 1px solid black;" width="25%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>    
+      <td style=" border: 1px solid black;" width="5%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>        
     </tr>	
 <?} ?>
 <tr class="first" style=" border: 0px solid black;">
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>
-      <td style=" border: 1px solid black;" align="right" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo "TOTALE "; ?></td>
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $totalepezzi; ?></td>            
-      <td style=" border: 1px solid black;" width="10%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $totcolli; ?></td>    
+      <td style=" border: 1px solid black;" width="5%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>
+      <td style=" border: 1px solid black;" align="right" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b></td>
+      <td style=" border: 1px solid black;" width="65%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b></td>            
+      <td style=" border: 1px solid black;" width="25%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo "TOTALE "; ?></td>    
+      <td style=" border: 1px solid black;" width="5%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $totalepezzi; ?></td>    
+    
     </tr>
 </table> 
 <table id="thetable"  cellspacing="10" width="790" class="table6x"> 
@@ -1612,7 +1610,7 @@ if ($conn->query($sql) === TRUE)
     else { echo "Error inserted record: " . $conn->error; }   
     }    
 ?>
-N.<? echo "<font face='Arial' size='5' color='#cc0000'><b>&nbsp;&nbsp; ".$tesseraww."</b></font>";?>   &nbsp;&nbsp;&nbsp;    DEL  <? echo $oggi."<br>"; ?>
+N.<? echo "<font face='Arial' size='4' color='#ffffff'><b>&nbsp;&nbsp; ".$tesseraww."</b></font>";?>   &nbsp;&nbsp;&nbsp;    DEL  <? echo $oggi."<br>"; ?>
 <br>
 <br>
 </td>
@@ -1656,11 +1654,12 @@ N.<? echo "<font face='Arial' size='5' color='#cc0000'><b>&nbsp;&nbsp; ".$tesser
  </table>
 <? ################################   fine intestazione   ####################### ?>
 <table id="thetable"  cellspacing="0" width="790" class="table6x"> 
-<td  bgcolor="#000000" align="center" width="10%"><font size="3" face="Arial" color="#FFFFFF"><b>PRG</b></td>  
-<td  bgcolor="#000000" align="center" ><font size="3" face="Arial" color="#FFFFFF"><b>DESCRIZIONE DEI BENI</b></td>      
-<td  bgcolor="#000000" align="center" width="10%"><font size="3" face="Arial" color="#FFFFFF"><b>QT</b></td>      
-<td  bgcolor="#000000" align="center" width="10%"><font size="3" face="Arial" color="#FFFFFF"><b>COLLI</b></td>      
-</td>
+<td  bgcolor="#000000" align="center" width="5%"><font size="3" face="Arial" color="#FFFFFF"><b>PRG</b></td>  
+<td  bgcolor="#000000" align="center" ><font size="3" face="Arial" color="#FFFFFF"><b>COD.</b></td>      
+<td  bgcolor="#000000" align="center" width="65%"><font size="3" face="Arial" color="#FFFFFF"><b>DESCRIZIONE</b></td>      
+<td  bgcolor="#000000" align="center" width="25%"><font size="3" face="Arial" color="#FFFFFF"><b>SERIALE</b></td>      
+<td  bgcolor="#000000" align="center" width="5%"><font size="3" face="Arial" color="#FFFFFF"><b>QTY</b></td>      
+
 </tr>
 
 <? $comodocat=$cliente; $totalepezzi=0;} }
@@ -1676,10 +1675,12 @@ $tot++;
 	<tr class="first" style=" border: 1px solid black;"> 
 
   
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $tot; ?></td>
-      <td style=" border: 1px solid black;" align="left" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $articolods." ".$denominazione." Seriale: ".$serialeds; ?></td>
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $quantitads; ?></td>            
-      <td style=" border: 1px solid black;" width="10%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $collix; ?></td>
+      <td style=" border: 1px solid black;" width="5%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $tot; ?></td>
+      <td style=" border: 1px solid black;" align="left" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><?php echo $articolods; ?></td>
+      <td style=" border: 1px solid black;" width="65%" align="left" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><?php echo $denominazionearticolo; ?></td>            
+      <td style=" border: 1px solid black;" width="25%"align="left" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><?php echo $serialeds; ?></td>
+      <td style=" border: 1px solid black;" width="5%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><?php echo $quantitads; ?></td>
+
 <? $totalepezzi=$totalepezzi+$quantitads; 
 if($simula!="on"){
 $sql = "UPDATE daspedire set                                   
@@ -1712,43 +1713,75 @@ if ($conn->query($sql) === TRUE)
 $tot++;    
 for ($i = $tot; $i <= 15; $i++) { ?>
 <tr class="first" style=" border: 0px solid black;">
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $i; ?></td>
+      <td style=" border: 1px solid black;" width="5%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $i; ?></td>
       <td style=" border: 1px solid black;" align="left" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>            
-      <td style=" border: 1px solid black;" width="10%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>    
+      <td style=" border: 1px solid black;" width="65%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>            
+      <td style=" border: 1px solid black;" width="25%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>    
+      <td style=" border: 1px solid black;" width="5%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>    
+
     </tr>	
 <?} ?>
 <tr class="first" style=" border: 0px solid black;">
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>
-      <td style=" border: 1px solid black;" align="right" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo "TOTALE "; ?></td>
-      <td style=" border: 1px solid black;" width="10%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $totalepezzi; ?></td>            
-      <td style=" border: 1px solid black;" width="10%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $totcolli; ?></td>    
+      <td style=" border: 1px solid black;" width="5%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo " "; ?></td>
+      <td style=" border: 1px solid black;" align="right" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b></td>
+      <td style=" border: 1px solid black;" width="65%" align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b></td>            
+      <td style=" border: 1px solid black;" width="25%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo "TOTALE "; ?></td>    
+      <td style=" border: 1px solid black;" width="5%"align="center" bgcolor="<? echo $colore; ?>"><font size="3" face="Arial"><b><?php echo $totalepezzi; ?></td>    
+
     </tr>
 </table> 
-
+<br>
 <table id="thetable"  cellspacing="10" width="790" class="table6x"> 
 <tr class="first" style=" border: 0px solid black;">
-<td style=" border: 1px solid black;" width="80%" align="left" bgcolor="<? echo $colore; ?>"><font size="2" face="Arial" color="#000000">TRASPORTO A MEZZO </font></td>
-<td style=" border: 1px solid black;"  align="center" bgcolor="<? echo $colore; ?>"><font size="1" face="Arial" color="#000000">DATA RITIRO </font> </td>
+<td style=" border: 1px solid black;" width="40%" align="left" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Causale del Trasporto</font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size=2" face="Arial" color="#000000">Numero Colli</font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Peso Lordo</font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Peso Netto</font> </td>
 </tr>
-<tr class="first" style=" border: 0px solid black;" height="35">
-<td style=" border: 1px solid black;" width="80%" align="left" bgcolor="<? echo $colore; ?>"><font size="1" face="Arial" color="#000000">O - Mittente&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          O - Vettore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            O - Destinatario&nbsp;&nbsp;&nbsp;  </font></td>
-<td style=" border: 1px solid black;"  align="center" bgcolor="<? echo $colore; ?>"></td>
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="40%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000">&nbsp; </font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
 </tr>
-<tr height="35">
-<td colspan="2" valign="top" style=" border: 1px solid black;" width="80%" align="left" bgcolor="<? echo $colore; ?>"><font size="1" face="Arial" color="#000000">VETTORE</font></td>
+
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="40%" align="left" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Trasporto a cura del</font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size=2" face="Arial" color="#000000">Aspetto Esteriore</font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Porto</font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Cognome in Stampatello</font> </td>
 </tr>
-<tr height="35">
-<td colspan="2" valign="top" style=" border: 1px solid black;" width="80%" align="left" bgcolor="<? echo $colore; ?>"><font size="1" face="Arial" color="#000000">ANNOTAZIONI</font></td>
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="40%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000">VETTORE&nbsp; </font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
 </tr>
-<tr height="35">
-<td colspan="2" valign="top" style=" border: 1px solid black;" width="80%" align="left" bgcolor="<? echo $colore; ?>"><font size="1" face="Arial" color="#000000">FIRMA MITTENTE</font></td>
+
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="40%" align="left" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Denominazione del Vettore</font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Data Ora Presa</font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Firma Vettore</font> </td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Firma Conducente</font> </td>
 </tr>
-<tr height="35">
-<td colspan="2" valign="top" style=" border: 1px solid black;" width="80%" align="left" bgcolor="<? echo $colore; ?>"><font size="1" face="Arial" color="#000000">FIRMA VETTORE</font></td>
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="40%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000">&nbsp; </font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
 </tr>
-<tr height="35">
-<td colspan="2" valign="top" style=" border: 1px solid black;" width="80%" align="left" bgcolor="<? echo $colore; ?>"><font size="1" face="Arial" color="#000000">FIRMA DESTINATARIO</font></td>
+
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="40%" align="left" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Denominazione del Destinatario</font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Data Ora Consegna</font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Firma Destinatario</font> </td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="#cecccc"><font size="2" face="Arial" color="#000000">Nome Cogn. Dest.</font> </td>
+</tr>
+<tr class="first" style=" border: 0px solid black;">
+<td style=" border: 1px solid black;" width="40%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000">&nbsp; </font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
+<td style=" border: 1px solid black;" width="20%" align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font></td>
+<td style=" border: 1px solid black;" width="20%"  align="center" bgcolor="<? echo $colore; ?>"><font size="4" face="Arial" color="#000000"></font> </td>
 </tr>
 </table> 
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>             
